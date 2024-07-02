@@ -1,0 +1,36 @@
+<Window x:Class="MullvadChecker.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="Mullvad VPN Checker" Height="400" Width="360" Background="#1E1E1E">
+    <Window.Resources>
+        <Style x:Key="ToggleButtonStyle" TargetType="ToggleButton">
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="ToggleButton">
+                        <Border Background="{TemplateBinding Background}" CornerRadius="20" BorderBrush="Gray" BorderThickness="1">
+                            <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                        </Border>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsChecked" Value="True">
+                                <Setter Property="Background" Value="#FF5722"/>
+                            </Trigger>
+                            <Trigger Property="IsChecked" Value="False">
+                                <Setter Property="Background" Value="#4CAF50"/>
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+    </Window.Resources>
+    <Grid>
+        <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center" Margin="10">
+            <TextBlock Text="Mullvad VPN Checker" Foreground="White" FontSize="24" FontWeight="Bold" Margin="0,0,0,20" HorizontalAlignment="Center"/>
+            <ToggleButton x:Name="ToggleCheckMullvad" Content="Start Checking Mullvad Connection" Width="250" Height="40" Margin="10" Style="{StaticResource ToggleButtonStyle}" Foreground="White" FontWeight="Bold" Checked="ToggleCheckMullvad_Checked" Unchecked="ToggleCheckMullvad_Unchecked"/>
+            <TextBlock x:Name="StatusText" Text="Status: Unknown" Margin="10" FontSize="16" Foreground="White" TextAlignment="Center"/>
+            <TextBlock x:Name="ServerText" Text="Server: Unknown" Margin="10" FontSize="16" Foreground="White" TextAlignment="Center"/>
+            <TextBlock x:Name="IPText" Text="IP: Unknown" Margin="10" FontSize="16" Foreground="White" TextAlignment="Center"/>
+            <ToggleButton x:Name="ToggleStartup" Content="Start on Windows Startup" Width="250" Height="40" Margin="10" Style="{StaticResource ToggleButtonStyle}" Foreground="White" FontWeight="Bold" Checked="ToggleStartup_Checked" Unchecked="ToggleStartup_Unchecked"/>
+        </StackPanel>
+    </Grid>
+</Window>
